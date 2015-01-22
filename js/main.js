@@ -76,8 +76,6 @@ var setupMasonry = function() {
 
 var loadRemote = function() {
   var url = 'http://psdserver.cinlindev.rfisite.com/rest.json';
-  alert("so far so good");
-
   $('.loading-spinner').show();
   $('.container').hide();
   $('.container').empty();
@@ -86,7 +84,6 @@ var loadRemote = function() {
       if (i >= MAX_IMAGE_RESULTS) {
         return;
       }
-      alert("loading an image");
       addThumbToContainer(photo);
     });
 

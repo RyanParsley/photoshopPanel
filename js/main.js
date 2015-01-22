@@ -48,7 +48,7 @@ var addThumbToContainer = function(photo) {
   var thumb_url = 'http://psdserver.cinlindev.rfisite.com/assets/thumbs/'+photo.id+'.jpg';
   var real_image_url = 'http://psdserver.cinlindev.rfisite.com/assets/'+photo.id+'.psd';
   var thumb = $('<div class="thumb"><div class="overlay"></div><img title="'+ photo.title +'" src="' + thumb_url + '" ></img><p>'+photo.title+'</p></div>').appendTo('.container');
-    csInterface.
+
   thumb.click(function() {
     var overlay = thumb.find('.overlay');
     thumb.addClass('downloading');
@@ -76,6 +76,7 @@ var setupMasonry = function() {
 
 var loadRemote = function() {
   var url = 'http://psdserver.cinlindev.rfisite.com/rest.json';
+  alert("so far so good");
 
   $('.loading-spinner').show();
   $('.container').hide();
@@ -85,6 +86,7 @@ var loadRemote = function() {
       if (i >= MAX_IMAGE_RESULTS) {
         return;
       }
+      alert("loading an image");
       addThumbToContainer(photo);
     });
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ExtensionManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExtensionBundleId="com.example.json" ExtensionBundleName="Json Loader" ExtensionBundleVersion="1.0.0" Version="4.0">
+<ExtensionManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExtensionBundleId="com.ryan.loader" ExtensionBundleName="Loader" ExtensionBundleVersion="1.0.0" Version="4.0">
 	<ExtensionList>
-		<Extension Id="com.example.json.extension" Version="1.0"/>
+		<Extension Id="com.ryan.loader.extension" Version="1.0"/>
 	</ExtensionList>
 	<ExecutionEnvironment>
 		<HostList>
@@ -16,7 +16,7 @@
 		</RequiredRuntimeList>
 	</ExecutionEnvironment>
 	<DispatchInfoList>
-		<Extension Id="com.example.json.extension">
+		<Extension Id="com.ryan.loader.extension">
 			<DispatchInfo>
 				<Resources>
 					<MainPath>./index.html</MainPath>

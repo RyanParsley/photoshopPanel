@@ -19,6 +19,21 @@ var createTempFolder = function() {
   return tempFolder;
 };
 
+var logDownload = function(downloadedFile){
+      var logFile = createTempFolder()+'log.txt';
+      var fileTemp = JSON.stringify(window.cep.fs.readFile(logFile));
+      var output = JSON.parse(fileTemp).data;
+      var d = new Date();
+      output =  'downloaded: ' + downloadedFile + ' - ' + d.toDateString() + "\n" + output;
+      window.cep.fs.writeFile(logFile, output);
+}
+var showLog = function(){
+      var logFile = createTempFolder()+'log.txt';
+      var fileTemp = JSON.stringify(window.cep.fs.readFile(logFile));
+      var output = JSON.parse(fileTemp).data;
+      return output;
+}
+
 var downloadAndOpenInPhotoshop = function(url, name, thumb) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -36,9 +51,16 @@ var downloadAndOpenInPhotoshop = function(url, name, thumb) {
       var downloadedFile = createTempFolder() + name + '.psd';
       
       window.cep.fs.writeFile(downloadedFile, base64, cep.encoding.Base64);
+      
+      logDownload(downloadedFile);
+      
       csInterface.evalScript('openDocument("' + downloadedFile + '")');
+
       $('.container').masonry('remove', thumb);
       $('.container').masonry('reload');
+      $('.log').empty();
+      $('.log').append("<pre>"+showLog()+"</pre>");
+
     }       
   };
   xhr.send();
@@ -94,6 +116,7 @@ var loadRemote = function() {
       $('.loading-spinner').hide();
     });
   });
+  $('.log').append("<pre>"+showLog()+"</pre>");
 };
 
 var main = function() {
